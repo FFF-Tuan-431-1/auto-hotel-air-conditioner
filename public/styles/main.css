@@ -1,0 +1,30 @@
+
+.table td.offline {
+  color: #7f8c8d;
+}
+
+.table td.online {
+  color: #27ae60;
+}
+
+#btn-ping {
+  display: inline-block;
+}
+
+.placeholder {
+  display: inline;
+  margin-left: 20px;
+}
+
+.placeholder.success {
+  color: #27ae60;
+}
+
+.placeholder.error {
+  color: #e74c3c;
+}
+
+line.timeline{
+  stroke-width: 2px;
+  stroke: #222;
+}
