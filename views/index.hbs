@@ -1,4 +1,30 @@
 {{#contentFor "styles"}}
+  <link rel="stylesheet" href="css/index.css">
 {{/contentFor}}
 
-<h1>Hello, world!</h1>
+{{#contentFor "scripts"}}
+    <script src="scripts/index.js"></script>
+{{/contentFor}}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal icon header">
+            <i class="settings teal icon"></i>
+            <div class="content">
+                Log-in
+                <div class="sub header">Log-in to manage your hotel.</div>
+            </div>
+        </h2>
+        <form class="ui large form">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input id="password" type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="ui fluid large teal submit button" id="loginBtn">Login</div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>

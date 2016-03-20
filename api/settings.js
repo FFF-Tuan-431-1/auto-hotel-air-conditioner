@@ -7,6 +7,9 @@ const _ = require('lodash');
 module.exports = router;
 
 const debug = require('debug')('air:api:settings');
+const needLoginMiddleware = require('../middleware/needLogin');
+
+router.use(needLoginMiddleware);
 
 router.post('/', function *() {
   const states = yield this.user.getStates();

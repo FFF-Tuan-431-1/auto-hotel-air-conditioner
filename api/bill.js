@@ -7,8 +7,11 @@ const _ = require('lodash');
 module.exports = router;
 
 const debug = require('debug')('air:api:bill');
+const needLoginMiddleware = require('../middleware/needLogin');
 
-router.get('currentBill', function *() {
+router.use(needLoginMiddleware);
+
+router.get('/currentBill', function *() {
   const slots = yield this.user.getBill();
   this.response.body = {
     room: this.user.roomId,
@@ -18,7 +21,7 @@ router.get('currentBill', function *() {
   }
 });
 
-router.get('checkout', function *() {
+router.get('/checkout', function *() {
   this.user.active = false;
   yield this.user.save();
   this.session = null;

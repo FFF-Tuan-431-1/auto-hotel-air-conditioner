@@ -5,15 +5,15 @@ const userRouter = require('./user');
 const sessionRouter = require('./session');
 const settingsRouter = require('./settings');
 const billRouter = require('./bill');
+const pageRouter = require('./page');
 
 const sessionMiddleware = require('../middleware/session');
-const needLoginMiddleware = require('../middleware/needLogin');
 
 router.use(sessionMiddleware);
 
-router.use('/', sessionRouter.routes());
-router.use('/user', userRouter.routes());
-router.use('/settings', needLoginMiddleware, settingsRouter.routes());
-router.use('/', billRouter.routes());
+router.use('/api', sessionRouter.routes());
+router.use('/api', billRouter.routes());
+router.use('/api/user', userRouter.routes());
+router.use('/api/settings', settingsRouter.routes());
 
 module.exports = router;

@@ -6,7 +6,8 @@ module.exports = router;
 const debug = require('debug')('air:api:session');
 const User = require('../model/user');
 
-router.post('login', function *() {
+router.post('/login', function *() {
+  debug('!!!');
   const { password } = this.request.body;
   const user = yield User.find( { where: { password } });
   if (user) {
@@ -24,7 +25,7 @@ router.post('login', function *() {
   }
 });
 
-router.get('logout', function *() {
+router.get('/logout', function *() {
   if (!this.user) {
     this.response.status = 400;
     this.response.body = {

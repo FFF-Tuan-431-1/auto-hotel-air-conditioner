@@ -6,6 +6,10 @@ module.exports = router;
 const debug = require('debug')('air:api:user');
 const User = require('../model/user');
 
+const needLoginMiddleware = require('../middleware/needLogin');
+const isAdminMiddleware = require("../middleware/isAdmin");
+router.use(needLoginMiddleware, isAdminMiddleware);
+
 router.post('/', function *() {
   const { name, roomId } = this.request.body;
   try {

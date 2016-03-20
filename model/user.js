@@ -10,7 +10,7 @@ const State = require('./state');
 
 const User = db.define('user', {
   password: Sequelize.STRING,
-  roomId: Sequelize.INTEGER,
+  roomId: Sequelize.INTEGER, // if room is 888, then it's a admin account
   name: Sequelize.STRING,
   active: {
     type: Sequelize.BOOLEAN,
