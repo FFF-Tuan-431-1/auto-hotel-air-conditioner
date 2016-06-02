@@ -7,7 +7,6 @@ const debug = require('debug')('air:api:session');
 const User = require('../model/user');
 
 router.post('/login', function *() {
-  debug('!!!');
   const { password } = this.request.body;
   const user = yield User.find( { where: { password } });
   if (user) {

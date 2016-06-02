@@ -44,26 +44,18 @@ const User = db.define('user', {
         slots.push([prev, next]);
         return next;
       });
-      return slots.reduce((result, statePair) => {
+      return slots.map(statePair => {
         const [ prevState, nextState ] = statePair;
         const prevTime = moment(prevState.timestamp);
         const nextTime = moment(nextState.timestamp);
-        const duration = nextTime.diff(prevTime, 'seconds');
-        const money = calBill({
-          duration,
-          temperature: prevState.temperature,
-          speed: prevState.speed,
-          mode: prevState.mode
-        });
-        result.push({
+        return {
           temperature: prevState.temperature,
           speed: prevState.speed,
           mode: prevState.mode,
-          money,
+          money: nextState.money,
           startTime: prevTime.format('YYYY-MM-DD HH:mm:ss'),
           endTime: nextTime.format('YYYY-MM-DD HH:mm:ss')
-        });
-        return result;
+        };
       }, [])
     })
   }

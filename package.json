@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node--harmony --harmony_destructuring app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/FFF-Tuan-431-1/auto-hotel-air-conditioner#readme",
   "dependencies": {
+    "bluebird": "^3.4.0",
     "debug": "^2.2.0",
     "koa": "^1.2.0",
     "koa-body": "^1.4.0",
+    "koa-cors": "0.0.16",
     "koa-hbs": "^0.8.0",
+    "koa-logger": "^1.3.0",
     "koa-router": "^5.4.0",
     "koa-session": "^3.3.1",
     "koa-static": "^2.0.0",

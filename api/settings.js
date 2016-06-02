@@ -23,15 +23,16 @@ router.post('/', function *() {
   }
   let { temperature, speed, mode } = this.request.body;
   temperature = temperature ? temperature : lastState.temperature;
-  speed = speed ? speed : lastState.speed;
+  speed = !_.isUndefined(speed) ? speed : lastState.speed;
   mode = mode ? mode : lastState.mode;
   try {
     yield this.user.createState({ temperature, speed, mode });
     this.response.body = { temperature, speed, mode };
   } catch (e) {
-    debug(e);
     this.response.status = 400;
-    this.response.body = e;
+    this.response.body = {
+      error: e.errors[0].message
+    };
   }
 });
 

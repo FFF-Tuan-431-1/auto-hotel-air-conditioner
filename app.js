@@ -2,11 +2,18 @@ const koa = require('koa');
 const hbs = require('koa-hbs');
 const koaBody = require('koa-body');
 const session = require('koa-session');
+const cors = require('koa-cors');
+const logger = require('koa-logger');
 
 const debug = require('debug')('air:app');
 const app = koa();
 const router = require('./api');
 const pageRouter = require('./api/page');
+
+app.use(cors({
+  credentials: true
+}));
+app.use(logger());
 
 app.use(hbs.middleware({
   viewPath: __dirname + '/views',
